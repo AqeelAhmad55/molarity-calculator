@@ -167,29 +167,25 @@ export function MolesToGramsCalculator() {
   };
 
   return (
-    <div className="bg-blue-50 py-8">
-      <div className="space-y-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-blue-50 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8 py-4">
         {/* Header Section */}
-        <div className="bg-blue-50 border-b border-blue-100 py-8 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center">
-              <h1 className="text-2xl font-semibold text-blue-900 mb-4">
-                Moles to Grams - Convert Moles to Grams (Free)
-              </h1>
-              <p className="text-blue-700">
-                Our moles to grams converter is a free and easy-to-use online
-                tool that helps you convert moles to grams within seconds.
-                Simply enter the number of moles and the molar mass of the
-                compound, and our mol to g converter will instantly calculate
-                the moles in grams for you.
-              </p>
-            </div>
-          </div>
+
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-semibold text-blue-900 mb-4">
+            Moles to Grams - Convert Moles to Grams (Free)
+          </h1>
+          <p className="text-blue-700">
+            Our moles to grams converter is a free and easy-to-use online tool
+            that helps you convert moles to grams within seconds. Simply enter
+            the number of moles and the molar mass of the compound, and our mol
+            to g converter will instantly calculate the moles in grams for you.
+          </p>
         </div>
 
         {/* Calculator Interface */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-          <div className="text-center mb-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+          <div className="text-center mb-6 md:block hidden">
             <p className="text-gray-600">
               Formula: m = n × M (mass = moles × molar mass)
             </p>

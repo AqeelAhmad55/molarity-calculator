@@ -1,6 +1,16 @@
-import { calculateDilution, convertToStandard, formatNumber, UNIT_CONVERSIONS } from "@/utils/dilution-calculations";
+import {
+  calculateDilution,
+  convertToStandard,
+  formatNumber,
+  UNIT_CONVERSIONS,
+} from "@/utils/dilution-calculations";
 import { useEffect, useMemo, useState } from "react";
-import { ActionButtons, FormulaBox, InputField, ResultPanel } from "../common/calculator-components";
+import {
+  ActionButtons,
+  FormulaBox,
+  InputField,
+  ResultPanel,
+} from "../common/calculator-components";
 import { CONCENTRATION_UNITS, VOLUME_UNITS } from "@/utils/unit-constants";
 import { showResult, showSteps } from "@/utils/dom-utils";
 
@@ -115,8 +125,8 @@ export function DilutionCalculator() {
 
   return (
     <section className="bg-blue-50 border-b border-blue-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="text-center mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8 py-4">
+        <div className="text-center md:mb-8 mb-5">
           <h1 className="text-2xl font-semibold text-blue-900 mb-4">
             Dilution Calculator - Free & Accurate C1V1 C2V2 Calculator
           </h1>
@@ -126,8 +136,8 @@ export function DilutionCalculator() {
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <div className="text-center mb-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5">
+          <div className="text-center mb-8 md:block hidden">
             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
               Dilution Formula: C₁V₁ = C₂V₂
             </h2>
@@ -138,7 +148,7 @@ export function DilutionCalculator() {
           </div>
 
           {/* Inputs */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 md:gap-6 gap-4 md:mb-8 mb-5">
             <InputField
               label="Initial Concentration (C₁)"
               id="c1-input"
@@ -196,32 +206,20 @@ export function DilutionCalculator() {
             />
 
             {/* Solvent auto calc */}
-            <div className="flex flex-col gap-2">
-              <label className="text-sm lg:text-base font-semibold text-gray-700">
-                Solvent Volume
-              </label>
-              <div className="flex gap-1">
-                <input
-                  type="number"
-                  value={solvent}
-                  placeholder="Auto-calculated"
-                  readOnly
-                  className="flex-1 px-2.5 py-1.5 border border-gray-200 rounded-l-xl bg-white text-gray-900"
-                />
-                <select
-                  value={solventUnit}
-                  onChange={(e) => setSolventUnit(e.target.value)}
-                  className="w-28 border border-l-0 border-gray-200 bg-white rounded-r-xl text-gray-700"
-                >
-                  {VOLUME_UNITS.map((unit) => (
-                    <option key={unit.value} value={unit.value}>
-                      {unit.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <p className="text-xs text-gray-600">V₂ - V₁</p>
-            </div>
+            <InputField
+              label="Solvent Volume"
+              id="solvent-volume"
+              placeholder="Auto-calculated"
+              type="number"
+              withUnit={true}
+              unitId="solvent-unit"
+              unitOptions={VOLUME_UNITS}
+              value={solvent}
+              onChange={() => {}} // Empty function since it's read-only
+              selectedUnit={solventUnit}
+              onUnitChange={setSolventUnit}
+              readOnly={true}
+            />
           </div>
 
           {/* Buttons */}

@@ -99,7 +99,7 @@ export default function GramsToMolesCalculator() {
     <>
       {/* Calculator Section */}
       <section className="bg-blue-50 border-b border-blue-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-8 py-4">
           <div className="text-center mb-8">
             <h1 className="text-2xl md:text-2xl font-bold text-blue-900 mb-4">
               Grams to Moles - Convert g to Moles ( Free & Unlimited )
@@ -112,8 +112,8 @@ export default function GramsToMolesCalculator() {
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <div className="text-center mb-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <div className="text-center mb-8 md:block hidden">
               <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
                 Formula: n = m/M
               </h2>

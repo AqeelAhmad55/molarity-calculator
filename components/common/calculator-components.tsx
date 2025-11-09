@@ -15,6 +15,7 @@ interface InputFieldProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   selectedUnit?: string;
   onUnitChange?: (value: string) => void;
+  readOnly?: boolean;
 }
 
 export function InputField({
@@ -29,6 +30,7 @@ export function InputField({
   onChange,
   selectedUnit,
   onUnitChange,
+  readOnly = false,
 }: InputFieldProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -74,6 +76,7 @@ export function InputField({
             value={value}
             onChange={onChange}
             placeholder={placeholder}
+            readOnly={readOnly}
             className="flex-1 lg:px-4 lg:py-2 px-2.5 py-1.5 lg:text-base text-sm rounded-l-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 transition-all duration-200"
           />
 
@@ -83,7 +86,7 @@ export function InputField({
             <button
               type="button"
               onClick={() => setIsOpen((prev) => !prev)}
-              className="flex items-center justify-between w-28 lg:px-4 lg:py-2 px-2.5 py-1.5 lg:text-base text-sm border border-l-0 border-gray-200 bg-white text-gray-700 rounded-r-xl transition-all duration-200 cursor-pointer"
+              className="flex items-center justify-between sm:w-28 w-24 lg:px-4 lg:py-2 px-2.5 py-1.5 lg:text-base text-sm border border-l-0 border-gray-200 bg-white text-gray-700 rounded-r-xl transition-all duration-200 cursor-pointer"
             >
               <span className="truncate">{selectedLabel}</span>
               <ChevronDown
@@ -94,7 +97,7 @@ export function InputField({
             </button>
 
             {isOpen && (
-              <div className="absolute right-0 z-10 w-28 bg-white border border-gray-200 rounded-lg shadow-lg mt-1">
+              <div className="absolute right-0 z-10 sm:w-28 w-24 bg-white border border-gray-200 rounded-lg shadow-lg mt-1">
                 {unitOptions.map((opt) => (
                   <button
                     key={opt.value}
@@ -115,8 +118,13 @@ export function InputField({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          readOnly={readOnly}
           className="w-full lg:px-4 lg:py-2 px-2.5 py-1.5 lg:text-base text-sm rounded-xl border border-gray-200 bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-gray-400 transition-all duration-200"
         />
+      )}
+
+      {id === "solvent-volume" && (
+        <p className="text-xs text-gray-600 pl-2 ">V₂ - V₁</p>
       )}
     </div>
   );
@@ -219,11 +227,11 @@ export function ActionButtons({
   disabled,
 }: ActionButtonsProps) {
   return (
-    <div className="flex gap-4 justify-center mt-6">
+    <div className="flex sm:gap-4 gap-2 justify-center mt-6">
       <button
         onClick={onCalculate}
         disabled={disabled}
-        className={`flex-1 rounded-full bg-linear-to-r from-blue-600 to-indigo-500 md:py-2.5 py-0  font-semibold text-white shadow-md hover:from-blue-700 hover:to-indigo-600 hover:shadow-lg transition-all duration-200 ${
+        className={`flex-1 rounded-full bg-linear-to-r from-blue-600 to-indigo-500 md:py-2.5 py-0   text-sm sm:text-base font-semibold text-white shadow-md hover:from-blue-700 hover:to-indigo-600 hover:shadow-lg transition-all duration-200 ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
         }`}
       >
@@ -231,7 +239,7 @@ export function ActionButtons({
       </button>
       <button
         onClick={onClear}
-        className="flex-1 rounded-full bg-gray-100 py-2.5 font-semibold text-gray-800 shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-200"
+        className="flex-1 rounded-full bg-gray-100 py-2.5  text-sm sm:text-base font-semibold text-gray-800 shadow-sm hover:bg-gray-200 hover:shadow-md transition-all duration-200"
       >
         Clear
       </button>

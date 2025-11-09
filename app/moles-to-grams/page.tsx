@@ -3,7 +3,7 @@ import { MolesToGramsCalculator } from "@/components/moles-to-grams/moles-to-gra
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main className="">
       <MolesToGramsCalculator />
       <InfoSections />
     </main>

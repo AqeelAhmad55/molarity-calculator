@@ -3,8 +3,8 @@ export default function DilutionInfoSection() {
     <main className="min-h-screen bg-gray-50 py-5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 ">
         {/* What is Dilution Section */}
-        <section className="mb-16 bg-white p-8 rounded-2xl">
-          <h1 className="text-4xl font-bold text-slate-900 mb-6">
+        <section className="md:mb-16 mb-8 bg-white md:p-8 p-5 rounded-2xl">
+          <h1 className="md:text-2xl text-xl font-bold text-slate-900 mb-6">
             What is Dilution
           </h1>
 
@@ -88,8 +88,8 @@ export default function DilutionInfoSection() {
         </section>
 
         {/* Why C1V1 C2V2 Calculator is Important Section */}
-        <section className=" bg-white p-8 rounded-2xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+        <section className=" bg-white md:p-8 p-5 rounded-2xl">
+          <h2 className="md:text-2xl text-xl font-bold text-slate-900 mb-6">
             Why C1V1 C2V2 Calculator is important
           </h2>
 
@@ -164,8 +164,8 @@ export default function DilutionInfoSection() {
           </p>
         </section>
 
-        <section className="mb-16 mt-16 bg-white p-8 rounded-2xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">
+        <section className="md:mb-16 mb-8 mt-16 bg-white md:p-8 p-5 rounded-2xl">
+          <h2 className="md:text-2xl text-xl font-bold text-slate-900 mb-6">
             How To Solve Dilution Equation Related Problems Using Our Free
             Dilution Equation Calculator
           </h2>
@@ -189,14 +189,14 @@ export default function DilutionInfoSection() {
         </section>
 
         {/* Top Best Features Section */}
-        <section className="mb-16 bg-white p-8 rounded-2xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-8">
+        <section className="md:mb-16 mb-8 bg-white md:p-8 p-5 rounded-2xl">
+          <h2 className="md:text-2xl text-xl font-bold text-slate-900 mb-8">
             Top Best Features of Our Dilution Calculator
           </h2>
 
           {/* Feature 1: Automate Unit Conversion */}
-          <div className="mb-10">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+          <div className="md:mb-10 mb-6">
+            <h3 className="md:text-xl text-lg font-bold text-slate-900 mb-3">
               Automate Unit Conversion
             </h3>
             <p className="text-slate-700 leading-relaxed">
@@ -211,8 +211,8 @@ export default function DilutionInfoSection() {
           </div>
 
           {/* Feature 2: Step by Step Calculation */}
-          <div className="mb-10">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+          <div className="md:mb-10 mb-6">
+            <h3 className="md:text-xl text-lg font-bold text-slate-900 mb-3">
               Step by Step Calculation
             </h3>
             <p className="text-slate-700 leading-relaxed">
@@ -230,8 +230,8 @@ export default function DilutionInfoSection() {
           </div>
 
           {/* Feature 3: Copy The Results */}
-          <div className="mb-10">
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+          <div className="md:mb-10 mb-6">
+            <h3 className="md:text-xl text-lg font-bold text-slate-900 mb-3">
               Copy The Results
             </h3>
             <p className="text-slate-700 leading-relaxed">
@@ -249,7 +249,7 @@ export default function DilutionInfoSection() {
 
           {/* Feature 4: Free To Use */}
           <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">
+            <h3 className="md:text-xl text-lg font-bold text-slate-900 mb-3">
               Free To Use
             </h3>
             <p className="text-slate-700 leading-relaxed">
@@ -270,8 +270,10 @@ export default function DilutionInfoSection() {
         </section>
 
         {/* Conclusion Section */}
-        <section className="bg-white p-8 rounded-2xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Conclusion</h2>
+        <section className="bg-white md:p-8 p-5 rounded-2xl">
+          <h2 className="md:text-2xl text-xl font-bold text-slate-900 mb-6">
+            Conclusion
+          </h2>
           <p className="text-slate-700 leading-relaxed">
             Our Dilution Calculator offers a simple, accurate, and time-saving
             solution for anyone working with dilution problems in chemistry. By

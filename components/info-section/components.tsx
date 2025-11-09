@@ -11,11 +11,13 @@ export function InfoSection({
   className = "",
 }: InfoSectionProps) {
   return (
-    <section className="mb-16">
+    <section className="md:mb-16 mb-8">
       <div
-        className={`bg-white rounded-2xl shadow-sm border border-gray-100 p-8 ${className}`}
+        className={`bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5 ${className}`}
       >
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">{title}</h2>
+        <h2 className="md:md:text-2xl text-xl text-xl font-semibold text-gray-900 mb-6">
+          {title}
+        </h2>
         {children}
       </div>
     </section>

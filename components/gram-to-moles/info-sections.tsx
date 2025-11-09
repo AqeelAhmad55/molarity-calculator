@@ -35,9 +35,9 @@ export function GramToMolesInfoSection() {
   return (
     <>
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+        <section className="md:mb-16 mb-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
               What is Grams to Moles Conversion
             </h2>
             <div className="text-gray-700 space-y-4">
@@ -76,9 +76,9 @@ export function GramToMolesInfoSection() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+        <section className="md:mb-16 mb-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
               How To Convert Grams to Moles Using Our Grams to Moles Calculator
             </h2>
             <div className="text-gray-700">
@@ -101,9 +101,9 @@ export function GramToMolesInfoSection() {
           </div>
         </section>
 
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-8">
+        <section className="md:mb-16 mb-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-8">
               Features Offered By Our g to Mol Calculator
             </h2>
 
@@ -129,9 +129,9 @@ export function GramToMolesInfoSection() {
         </section>
 
         {/* Why Important Section */}
-        <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+        <section className="md:mb-16 mb-8">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
               Why Grams to Moles Conversion is Important
             </h2>
             <div className="text-gray-700 space-y-3">
@@ -166,8 +166,8 @@ export function GramToMolesInfoSection() {
 
         {/* Conclusion Section */}
         <section className="mb-16">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-semibold text-gray-900 mb-6">
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 md:p-8">
+            <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
               Conclusion
             </h2>
             <div className="text-gray-700 space-y-4">

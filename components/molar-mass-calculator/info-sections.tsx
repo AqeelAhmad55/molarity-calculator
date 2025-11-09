@@ -2,9 +2,9 @@ export function MolarMassInfoSection() {
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Section 1: What is Molar Mass */}
-      <section className="mb-16">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">
+      <section className="md:mb-16 mb-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5">
+          <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
             What is Molar Mass
           </h2>
 
@@ -46,9 +46,9 @@ export function MolarMassInfoSection() {
       </section>
 
       {/* Section 2: How To Calculate */}
-      <section className="mb-16">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">
+      <section className="md:mb-16 mb-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5">
+          <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
             How To Calculate Molar Mass Using Our Molar Mass Calculator
           </h2>
 
@@ -83,9 +83,9 @@ export function MolarMassInfoSection() {
       </section>
 
       {/* Section 3: Features */}
-      <section className="mb-16">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">
+      <section className="md:mb-16 mb-8">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5">
+          <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
             Features Offered By Our Molecular Weight Calculator
           </h2>
 
@@ -185,8 +185,8 @@ export function MolarMassInfoSection() {
 
       {/* Section 4: Conclusion */}
       <section>
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 md:p-8 p-5">
+          <h2 className="md:text-2xl text-xl font-semibold text-gray-900 mb-6">
             Conclusion
           </h2>
 

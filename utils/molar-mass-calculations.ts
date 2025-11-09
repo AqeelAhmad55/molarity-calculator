@@ -343,6 +343,7 @@ export function calculateMolarMass(formula: string): {
   elements: Record<string, number>;
   totalMass: number;
   steps: CalculationStep[];
+  calculationSteps: string[]; // Add this line
 } {
   if (!formula.trim()) {
     throw new Error("Please enter a chemical formula.");
@@ -357,7 +358,30 @@ export function calculateMolarMass(formula: string): {
 
     const { totalMass, steps } = calculateMolarMassFromElements(elements);
 
-    return { formula, elements, totalMass, steps };
+    // Generate calculation steps in the new format
+    const calculationSteps = [
+      "Step 1: Break down the formula into elements",
+      `Formula: ${formula} → ${formatElementCounts(elements)}`,
+      "Step 2: Calculate mass for each element",
+      ...steps.map(
+        (step) =>
+          `${step.element}: ${step.atomicMass.toFixed(3)} g/mol × ${
+            step.count
+          } = ${step.mass.toFixed(3)} g/mol`
+      ),
+      "Step 3: Sum all element masses",
+      `Total Molar Mass = ${steps
+        .map((step) => step.mass.toFixed(3))
+        .join(" + ")} = ${totalMass.toFixed(3)} g/mol`,
+    ];
+
+    return {
+      formula,
+      elements,
+      totalMass,
+      steps,
+      calculationSteps, // Include the new steps array
+    };
   } catch (error) {
     throw error;
   }

@@ -30,7 +30,7 @@ const InfoSections = () => {
   return (
     <div className="bg-gray-50 py-16">
       <div className=" space-y-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="bg-white rounded-lg p-8 border border-gray-100">
+        <section className="bg-white rounded-lg md:p-8 p-5 border border-gray-100">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-gray-900">
               What is Moles To Grams Conversion
@@ -82,7 +82,7 @@ const InfoSections = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg p-8 border border-gray-100">
+        <section className="bg-white rounded-lg md:p-8 p-5 border border-gray-100">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-gray-900">
               How To Convert Moles to Grams Using Our Moles to Grams Converter
@@ -139,7 +139,7 @@ const InfoSections = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg p-8 border border-gray-100">
+        <section className="bg-white rounded-lg md:p-8 p-5 border border-gray-100">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-gray-900">
               Features Offered By Our Moles to Grams Calculator
@@ -158,7 +158,7 @@ const InfoSections = () => {
           </div>
         </section>
 
-        <section className="bg-white rounded-lg p-8 border border-gray-100">
+        <section className="bg-white rounded-lg md:p-8 p-5 border border-gray-100">
           <div className="space-y-6">
             <h2 className="text-2xl font-semibold text-gray-900">Conclusion</h2>
 
