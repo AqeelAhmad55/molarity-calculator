@@ -148,7 +148,6 @@ export function ResultPanel({
   copyBtnId,
   onCopy,
   defaultMessage = "Enter values and click calculate",
-  showCopyButton = false,
   children,
 }: ResultPanelProps) {
   return (

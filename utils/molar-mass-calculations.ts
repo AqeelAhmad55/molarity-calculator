@@ -358,7 +358,6 @@ export function calculateMolarMass(formula: string): {
 
     const { totalMass, steps } = calculateMolarMassFromElements(elements);
 
-    // Generate calculation steps in the new format
     const calculationSteps = [
       "Step 1: Break down the formula into elements",
       `Formula: ${formula} → ${formatElementCounts(elements)}`,

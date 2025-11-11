@@ -1,7 +1,6 @@
 import {
   calculateDilution,
   convertToStandard,
-  formatNumber,
   UNIT_CONVERSIONS,
 } from "@/utils/dilution-calculations";
 import { useEffect, useMemo, useState } from "react";
@@ -13,6 +12,7 @@ import {
 } from "../common/calculator-components";
 import { CONCENTRATION_UNITS, VOLUME_UNITS } from "@/utils/unit-constants";
 import { showResult, showSteps } from "@/utils/dom-utils";
+import { formatNumber } from "@/utils/calculations";
 
 export function DilutionCalculator() {
   const [c1, setC1] = useState("");

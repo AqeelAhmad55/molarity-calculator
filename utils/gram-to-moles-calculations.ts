@@ -1,3 +1,5 @@
+import { formatNumber } from "./calculations";
+
 // Unit conversion constants and functions - EXACT formulas preserved
 export const UNIT_CONVERSIONS = {
   mass: {
@@ -32,18 +34,6 @@ export function convertToStandard(
     throw new Error(`Unknown unit: ${unit} for type: ${conversionType}`);
   }
   return value * conversion;
-}
-
-// Utility function to format numbers - EXACT SAME LOGIC
-export function formatNumber(num: number): string | number {
-  if (num === 0) return "0";
-  if (Math.abs(num) < 0.000001) {
-    return num.toExponential(4);
-  }
-  if (Math.abs(num) >= 1000000) {
-    return num.toExponential(4);
-  }
-  return Number.parseFloat(num.toFixed(6));
 }
 
 // Main calculation function - n = m/M (FORMULA PRESERVED EXACTLY)

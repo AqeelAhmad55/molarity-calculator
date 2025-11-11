@@ -2,11 +2,11 @@
 
 import {
   convertToStandard,
-  formatNumber,
   UNIT_CONVERSIONS,
 } from "@/utils/dilution-calculations";
 import { useState } from "react";
 import { InputField } from "../common/calculator-components";
+import { formatNumber } from "@/utils/calculations";
 
 export default function DilutionCalculator() {
   const [c1, setC1] = useState("");

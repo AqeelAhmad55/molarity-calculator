@@ -57,7 +57,32 @@ export function convertToStandard(
 
 export function formatNumber(num: number) {
   if (num === 0) return "0";
-  if (Math.abs(num) < 0.000001) return num.toExponential(4);
-  if (Math.abs(num) >= 1000000) return num.toExponential(4);
-  return Number.parseFloat(num.toFixed(6));
+
+  // For very small numbers, use custom formatting
+  if (Math.abs(num) < 0.001 && Math.abs(num) > 0) {
+    const numStr = num.toFixed(20);
+    // Find the first non-zero digit and take it plus one more
+    const decimalPart = numStr.split(".")[1];
+    let result = "0.";
+    let foundNonZero = false;
+    let digitsTaken = 0;
+
+    for (let i = 0; i < decimalPart.length && digitsTaken < 2; i++) {
+      if (decimalPart[i] === "0" && !foundNonZero) {
+        result += "0";
+      } else {
+        foundNonZero = true;
+        result += decimalPart[i];
+        digitsTaken++;
+      }
+    }
+
+    return result;
+  }
+
+  if (Math.abs(num) < 1000000 && num % 1 !== 0) {
+    return Number.parseFloat(num.toFixed(3));
+  }
+
+  return num.toString();
 }

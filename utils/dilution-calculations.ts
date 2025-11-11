@@ -1,3 +1,5 @@
+import { formatNumber } from "./calculations";
+
 export const UNIT_CONVERSIONS = {
   concentration: {
     M: 1,
@@ -32,13 +34,6 @@ export function convertToStandard(
     throw new Error(`Unknown unit: ${unit} for type: ${conversionType}`);
   }
   return value * conversion;
-}
-
-export function formatNumber(num: number): number | string {
-  if (num === 0) return "0";
-  if (Math.abs(num) < 0.000001) return num.toExponential(4);
-  if (Math.abs(num) >= 1000000) return num.toExponential(4);
-  return Number.parseFloat(num.toFixed(6));
 }
 
 export interface DilutionCalculation {
