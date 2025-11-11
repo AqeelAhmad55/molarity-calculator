@@ -55,33 +55,32 @@ export function convertToStandard(
   return value * conversion;
 }
 
-export function formatNumber(num: number) {
+export function formatNumber(num: number): string {
   if (num === 0) return "0";
 
-  // For very small numbers, use custom formatting
-  if (Math.abs(num) < 0.001 && Math.abs(num) > 0) {
-    const numStr = num.toFixed(20);
-    // Find the first non-zero digit and take it plus one more
-    const decimalPart = numStr.split(".")[1];
-    let result = "0.";
-    let foundNonZero = false;
-    let digitsTaken = 0;
+  const absNum = Math.abs(num);
 
-    for (let i = 0; i < decimalPart.length && digitsTaken < 2; i++) {
-      if (decimalPart[i] === "0" && !foundNonZero) {
-        result += "0";
-      } else {
-        foundNonZero = true;
-        result += decimalPart[i];
-        digitsTaken++;
-      }
+  // For extremely small numbers (less than 1e-10)
+  if (absNum < 1e-10 && absNum > 0) {
+    const sci = num.toExponential(4);
+    const [coeff, exp] = sci.split("e");
+    const exponent = parseInt(exp);
+
+    if (exponent < -6) {
+      const leadingZeros = "0".repeat(Math.abs(exponent) - 1);
+      const digits = Math.abs(parseFloat(coeff)).toFixed(2).replace("0.", "");
+      return `0.${leadingZeros}${digits}`;
     }
-
-    return result;
   }
 
-  if (Math.abs(num) < 1000000 && num % 1 !== 0) {
-    return Number.parseFloat(num.toFixed(3));
+  // For small but not extremely small numbers
+  if (absNum < 0.001) {
+    return num.toFixed(8).replace(/(\.\d*?[1-9])0+$/, "$1");
+  }
+
+  // Regular numbers with decimals
+  if (absNum < 1000000 && !Number.isInteger(num)) {
+    return parseFloat(num.toFixed(3)).toString();
   }
 
   return num.toString();
