@@ -1,5 +1,7 @@
 // components/Calculator/MolarityCalculator.tsx
+"use client";
 
+import { useState } from "react";
 import {
   ActionButtons,
   FormulaBox,
@@ -42,6 +44,23 @@ const volumeUnits = [
 ];
 
 export function MolarityCalculator() {
+  const [massUnit, setMassUnit] = useState("g");
+  const [molarMassUnit, setMolarMassUnit] = useState("g/mol");
+  const [volumeUnit, setVolumeUnit] = useState("L");
+  const [inputValues, setInputValues] = useState({
+    mass: "",
+    molarMass: "",
+    volume: "",
+  });
+
+  const handleInputChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValues((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
+
   return (
     <div>
       <h1 className="lg:block hidden md:text-xl text-lg font-bold text-center text-gray-900 my-8">
@@ -56,6 +75,10 @@ export function MolarityCalculator() {
             withUnit
             unitId="mass-unit"
             unitOptions={massUnits}
+            value={inputValues.mass}
+            onChange={handleInputChange("mass")}
+            selectedUnit={massUnit}
+            onUnitChange={setMassUnit}
           />
           <InputField
             label="Molar Mass (Mo)"
@@ -64,6 +87,10 @@ export function MolarityCalculator() {
             withUnit
             unitId="molar-mass-unit"
             unitOptions={molarMassUnits}
+            value={inputValues.molarMass}
+            onChange={handleInputChange("molarMass")}
+            selectedUnit={molarMassUnit}
+            onUnitChange={setMolarMassUnit}
           />
           <InputField
             label="Volume (V)"
@@ -72,6 +99,10 @@ export function MolarityCalculator() {
             withUnit
             unitId="volume-unit"
             unitOptions={volumeUnits}
+            value={inputValues.volume}
+            onChange={handleInputChange("volume")}
+            selectedUnit={volumeUnit}
+            onUnitChange={setVolumeUnit}
           />
           <ActionButtons
             calculateLabel="Calculate Molarity"

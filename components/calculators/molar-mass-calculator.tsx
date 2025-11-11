@@ -1,4 +1,7 @@
 // components/Calculator/MolarMassCalculator.tsx
+"use client";
+
+import { useState } from "react";
 import {
   ActionButtons,
   FormulaBox,
@@ -41,6 +44,23 @@ const volumeUnits = [
 ];
 
 export function MolarMassCalculator() {
+  const [massUnit, setMassUnit] = useState("g");
+  const [molarityUnit, setMolarityUnit] = useState("mol/L");
+  const [volumeUnit, setVolumeUnit] = useState("L");
+  const [inputValues, setInputValues] = useState({
+    mass: "",
+    molarity: "",
+    volume: "",
+  });
+
+  const handleInputChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValues((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
+
   return (
     <div>
       <h1 className="lg:block hidden md:text-xl text-lg font-bold text-center text-gray-900 my-8">
@@ -55,6 +75,10 @@ export function MolarMassCalculator() {
             withUnit
             unitId="molar-mass-mass-unit"
             unitOptions={massUnits}
+            value={inputValues.mass}
+            onChange={handleInputChange("mass")}
+            selectedUnit={massUnit}
+            onUnitChange={setMassUnit}
           />
           <InputField
             label="Molarity (M)"
@@ -63,6 +87,10 @@ export function MolarMassCalculator() {
             withUnit
             unitId="molar-mass-molarity-unit"
             unitOptions={molarityUnits}
+            value={inputValues.molarity}
+            onChange={handleInputChange("molarity")}
+            selectedUnit={molarityUnit}
+            onUnitChange={setMolarityUnit}
           />
           <InputField
             label="Volume (V)"
@@ -71,6 +99,10 @@ export function MolarMassCalculator() {
             withUnit
             unitId="molar-mass-volume-unit"
             unitOptions={volumeUnits}
+            value={inputValues.volume}
+            onChange={handleInputChange("volume")}
+            selectedUnit={volumeUnit}
+            onUnitChange={setVolumeUnit}
           />
           <ActionButtons
             calculateLabel="Calculate Molar Mass"

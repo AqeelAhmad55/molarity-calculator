@@ -177,7 +177,7 @@ export default function GramsToMolesCalculator() {
                     Number of Moles:{" "}
                     <strong className="text-green-600">
                       {result?.moles !== undefined
-                        ? `${Number(result.moles).toExponential(4)} mol`
+                        ? `${Number(result.moles)} mol`
                         : ""}
                     </strong>
                   </p>

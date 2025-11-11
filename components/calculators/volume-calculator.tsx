@@ -1,4 +1,7 @@
 // components/Calculator/VolumeCalculator.tsx
+"use client";
+
+import { useState } from "react";
 import {
   ActionButtons,
   FormulaBox,
@@ -39,6 +42,23 @@ const molarityUnits = [
 ];
 
 export function VolumeCalculator() {
+  const [massUnit, setMassUnit] = useState("g");
+  const [molarMassUnit, setMolarMassUnit] = useState("g/mol");
+  const [molarityUnit, setMolarityUnit] = useState("mol/L");
+  const [inputValues, setInputValues] = useState({
+    mass: "",
+    molarMass: "",
+    molarity: "",
+  });
+
+  const handleInputChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValues((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
+
   return (
     <div>
       <h1 className="lg:block hidden md:text-xl text-lg font-bold text-center text-gray-900 my-8">
@@ -53,6 +73,10 @@ export function VolumeCalculator() {
             withUnit
             unitId="volume-mass-unit"
             unitOptions={massUnits}
+            value={inputValues.mass}
+            onChange={handleInputChange("mass")}
+            selectedUnit={massUnit}
+            onUnitChange={setMassUnit}
           />
           <InputField
             label="Molar Mass (Mo)"
@@ -61,6 +85,10 @@ export function VolumeCalculator() {
             withUnit
             unitId="volume-molar-mass-unit"
             unitOptions={molarMassUnits}
+            value={inputValues.molarMass}
+            onChange={handleInputChange("molarMass")}
+            selectedUnit={molarMassUnit}
+            onUnitChange={setMolarMassUnit}
           />
           <InputField
             label="Molarity (M)"
@@ -69,6 +97,10 @@ export function VolumeCalculator() {
             withUnit
             unitId="volume-molarity-unit"
             unitOptions={molarityUnits}
+            value={inputValues.molarity}
+            onChange={handleInputChange("molarity")}
+            selectedUnit={molarityUnit}
+            onUnitChange={setMolarityUnit}
           />
           <ActionButtons
             calculateLabel="Calculate Volume"

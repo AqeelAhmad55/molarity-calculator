@@ -1,4 +1,7 @@
 // components/Calculator/MolesCalculator.tsx
+"use client";
+
+import { useState } from "react";
 import {
   ActionButtons,
   FormulaBox,
@@ -23,6 +26,20 @@ const volumeUnits = [
 ];
 
 export function MolesCalculator() {
+  const [volumeUnit, setVolumeUnit] = useState("L");
+  const [inputValues, setInputValues] = useState({
+    moles: "",
+    volume: "",
+  });
+
+  const handleInputChange =
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValues((prev) => ({
+        ...prev,
+        [field]: e.target.value,
+      }));
+    };
+
   return (
     <div>
       <h1 className="lg:block hidden md:text-xl text-lg font-bold text-center text-gray-900 my-8">
@@ -34,6 +51,8 @@ export function MolesCalculator() {
             label="Number of Moles (n)"
             id="moles-input"
             placeholder="Enter number of moles"
+            value={inputValues.moles}
+            onChange={handleInputChange("moles")}
           />
           <InputField
             label="Volume (V)"
@@ -42,6 +61,10 @@ export function MolesCalculator() {
             withUnit
             unitId="moles-volume-unit"
             unitOptions={volumeUnits}
+            value={inputValues.volume}
+            onChange={handleInputChange("volume")}
+            selectedUnit={volumeUnit}
+            onUnitChange={setVolumeUnit}
           />
           <ActionButtons
             calculateLabel="Calculate Molarity"

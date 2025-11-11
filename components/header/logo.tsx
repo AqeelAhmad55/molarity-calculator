@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 // components/Header/Logo.tsx
-export function Logo() {
+export function Logo({ style = "text-gray-900", style2 = "text-gray-500" }) {
   const router = useRouter();
   const handleClick = () => {
     router.push("/");
@@ -16,7 +16,7 @@ export function Logo() {
     >
       <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
         <svg
-          className="w-6 h-6 text-white"
+          className={`w-6 h-6 text-white`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -30,8 +30,8 @@ export function Logo() {
         </svg>
       </div>
       <div>
-        <p className="text-xl font-bold text-gray-900">Molarity Calculator</p>
-        <p className="text-xs text-gray-500">Calculate Molarity For Free</p>
+        <p className={`text-xl font-bold ${style}`}>Molarity Calculator</p>
+        <p className={`text-xs ${style2}`}>Calculate Molarity For Free</p>
       </div>
     </div>
   );

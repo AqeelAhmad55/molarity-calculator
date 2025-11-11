@@ -137,7 +137,7 @@ interface ResultPanelProps {
   copyBtnId: string;
   onCopy: () => void;
   defaultMessage?: string;
-  showCopyButton?: boolean; // Add this prop
+  showCopyButton?: boolean;
   children?: React.ReactNode;
 }
 
@@ -148,7 +148,7 @@ export function ResultPanel({
   copyBtnId,
   onCopy,
   defaultMessage = "Enter values and click calculate",
-  showCopyButton = false, // Default to false
+  showCopyButton = false,
   children,
 }: ResultPanelProps) {
   return (
@@ -156,22 +156,20 @@ export function ResultPanel({
       <h4 className="text-lg font-semibold text-gray-900 mb-4">{title}</h4>
       <div
         id={resultId}
-        className="rounded-xl border border-green-200 bg-green-50 p-4 text-center text-gray-800 font-medium "
+        className="rounded-xl border border-green-200 bg-green-50 p-4 text-center text-gray-800 font-medium"
       >
         {defaultMessage}
       </div>
       <div id={stepsId} className="mt-3 text-sm text-gray-600 hidden"></div>
 
-      {/* Conditionally show the copy button */}
-      {showCopyButton && (
-        <button
-          id={copyBtnId}
-          onClick={onCopy}
-          className="mt-5 w-full rounded-lg bg-linear-to-r from-blue-600 to-indigo-500 py-2.5 font-semibold text-white shadow-md hover:shadow-lg hover:from-blue-700 hover:to-indigo-600 transition-all duration-200"
-        >
-          📋 Copy Result
-        </button>
-      )}
+      {/* Copy button - starts hidden by default */}
+      <button
+        id={copyBtnId}
+        onClick={onCopy}
+        className="mt-5 w-full rounded-lg bg-linear-to-r from-blue-600 to-indigo-500 py-2.5 font-semibold text-white shadow-md hover:shadow-lg hover:from-blue-700 hover:to-indigo-600 transition-all duration-200 hidden"
+      >
+        📋 Copy Result
+      </button>
 
       {children}
     </div>
