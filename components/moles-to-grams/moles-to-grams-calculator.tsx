@@ -6,6 +6,7 @@ import {
   FormulaBox,
   ActionButtons,
 } from "@/components/common/calculator-components";
+import { formatNumber } from "@/utils/calculations";
 
 const MOLAR_MASS_UNITS: { [key: string]: number } = {
   "g/mol": 1,
@@ -30,34 +31,6 @@ function convertMolarMassToStandard(value: number, unit: string): number {
   return value * conversionFactor;
 }
 
-// Smart number formatting function
-function formatMassValue(value: number): string {
-  const absValue = Math.abs(value);
-
-  // For very small numbers (less than 0.0001), use exponential notation
-  if (absValue > 0 && absValue < 0.0001) {
-    return Number(value).toExponential(4);
-  }
-
-  // For numbers between 0.0001 and 1, show up to 6 decimal places but trim trailing zeros
-  if (absValue < 1 && absValue >= 0.0001) {
-    return value.toFixed(6).replace(/\.?0+$/, "");
-  }
-
-  // For numbers between 1 and 1000, show 2 decimal places but trim trailing zeros
-  if (absValue >= 1 && absValue < 1000) {
-    return value.toFixed(2).replace(/\.00$/, "");
-  }
-
-  // For numbers 1000 and above, show no decimal places
-  if (absValue >= 1000) {
-    return value.toFixed(0);
-  }
-
-  // Default case: show the number as is (for numbers between 0.0001 and 1 that need precise display)
-  return value.toString();
-}
-
 function generateCalculationSteps(
   moles: number,
   molarMass: number,
@@ -72,19 +45,19 @@ function generateCalculationSteps(
     steps.push(
       `Convert molar mass from ${unit} to g/mol: ${molarMass} ${unit} × ${
         MOLAR_MASS_UNITS[unit]
-      } = ${formatMassValue(molarMassStandard)} g/mol`
+      } = ${formatNumber(molarMassStandard)} g/mol`
     );
   }
 
   // Step 2: Apply the formula
   steps.push(
-    `Apply the formula m = n × M: m = ${formatMassValue(
+    `Apply the formula m = n × M: m = ${formatNumber(
       moles
-    )} mol × ${formatMassValue(molarMassStandard)} g/mol`
+    )} mol × ${formatNumber(molarMassStandard)} g/mol`
   );
 
   // Step 3: Calculate result
-  steps.push(`Calculate the result: m = ${formatMassValue(massInGrams)} g`);
+  steps.push(`Calculate the result: m = ${formatNumber(massInGrams)} g`);
 
   return steps;
 }
@@ -155,7 +128,7 @@ export function MolesToGramsCalculator() {
   const handleCopy = () => {
     if (!result) return;
 
-    const resultText = `${formatMassValue(result.massInGrams)} g`;
+    const resultText = `${formatNumber(result.massInGrams)} g`;
     const stepsText = result.calculationSteps.join("\n");
     const fullText = `Moles to Grams Conversion Result:\n${resultText}\n\nCalculation Steps:\n${stepsText}`;
 
@@ -247,13 +220,13 @@ export function MolesToGramsCalculator() {
                   Mass in Grams:{" "}
                   <strong className="text-green-600">
                     {result.massInGrams !== undefined
-                      ? `${formatMassValue(result.massInGrams)} g`
+                      ? `${formatNumber(result.massInGrams)} g`
                       : ""}
                   </strong>
                 </p>
                 <p className="text-sm text-gray-600">
-                  Moles: {formatMassValue(parseFloat(moles))} mol | Molar Mass:{" "}
-                  {formatMassValue(parseFloat(molarMass))} {unit}
+                  Moles: {formatNumber(parseFloat(moles))} mol | Molar Mass:{" "}
+                  {formatNumber(parseFloat(molarMass))} {unit}
                 </p>
               </div>
             </div>

@@ -55,33 +55,65 @@ export function convertToStandard(
   return value * conversion;
 }
 
+// Format with 3 significant digits, no scientific notation.
 export function formatNumber(num: number): string {
   if (num === 0) return "0";
 
   const absNum = Math.abs(num);
 
-  // For extremely small numbers (less than 1e-10)
-  if (absNum < 1e-10 && absNum > 0) {
-    const sci = num.toExponential(4);
-    const [coeff, exp] = sci.split("e");
-    const exponent = parseInt(exp);
-
-    if (exponent < -6) {
-      const leadingZeros = "0".repeat(Math.abs(exponent) - 1);
-      const digits = Math.abs(parseFloat(coeff)).toFixed(2).replace("0.", "");
-      return `0.${leadingZeros}${digits}`;
-    }
+  // For numbers with absolute value >= 1, use 3 decimal places.
+  if (absNum >= 1) {
+    return num.toFixed(3);
   }
 
-  // For small but not extremely small numbers
-  if (absNum < 0.001) {
-    return num.toFixed(8).replace(/(\.\d*?[1-9])0+$/, "$1");
+  // Determine exponent for significant-figure rounding.
+  const exponent = Math.floor(Math.log10(absNum));
+  const significantDigits = 3;
+  const scale = Math.pow(10, significantDigits - 1 - exponent);
+
+  const rounded = Math.round(num * scale) / scale;
+  const str = rounded.toString();
+
+  // If JavaScript is not using exponential notation, we are done.
+  if (!/[eE]/.test(str)) {
+    return str;
   }
 
-  // Regular numbers with decimals
-  if (absNum < 1000000 && !Number.isInteger(num)) {
-    return parseFloat(num.toFixed(3)).toString();
+  // Expand numbers written in exponential form (e.g. 6.25e-10) to full decimal.
+  const [mantissaRaw, exponentRaw] = str.split(/[eE]/);
+  const exp = parseInt(exponentRaw, 10);
+
+  let sign = "";
+  let mantissa = mantissaRaw;
+
+  if (mantissa.startsWith("-")) {
+    sign = "-";
+    mantissa = mantissa.slice(1);
+  } else if (mantissa.startsWith("+")) {
+    mantissa = mantissa.slice(1);
   }
 
-  return num.toString();
+  const dotIndex = mantissa.indexOf(".");
+  const digits = mantissa.replace(".", "");
+  const originalDecimalPos = dotIndex === -1 ? digits.length : dotIndex;
+
+  const newDecimalPos = originalDecimalPos + exp;
+
+  let result: string;
+
+  if (newDecimalPos <= 0) {
+    const zeros = "0".repeat(Math.abs(newDecimalPos));
+    result = `0.${zeros}${digits}`;
+  } else if (newDecimalPos >= digits.length) {
+    const zeros = "0".repeat(newDecimalPos - digits.length);
+    result = `${digits}${zeros}`;
+  } else {
+    result = `${digits.slice(0, newDecimalPos)}.${digits.slice(newDecimalPos)}`;
+  }
+
+  if (result.includes(".")) {
+    result = result.replace(/\.?0+$/, "");
+  }
+
+  return sign + result;
 }

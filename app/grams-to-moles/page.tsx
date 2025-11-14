@@ -6,6 +6,7 @@ import {
   InputField,
 } from "@/components/common/calculator-components";
 import { GramToMolesInfoSection } from "@/components/gram-to-moles/info-sections";
+import { formatNumber } from "@/utils/calculations";
 import { calculateGramsToMoles } from "@/utils/gram-to-moles-calculations";
 import { useCallback, useState } from "react";
 
@@ -177,7 +178,7 @@ export default function GramsToMolesCalculator() {
                     Number of Moles:{" "}
                     <strong className="text-green-600">
                       {result?.moles !== undefined
-                        ? `${Number(result.moles)} mol`
+                        ? `${formatNumber(result.moles)} mol`
                         : ""}
                     </strong>
                   </p>
