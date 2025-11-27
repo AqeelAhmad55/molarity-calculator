@@ -29,36 +29,36 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/dilution-calculator"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Dilution Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/grams-to-moles"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Grams to Moles
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/molar-mass-calculator"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Molar Mass Calculator
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/moles-to-grams"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Moles to Grams
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -69,28 +69,28 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <a
+                <Link
                   href="#"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Terms & Conditions
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="#"
                   className="text-gray-300 hover:text-blue-400 text-sm transition-colors duration-200 flex items-center"
                 >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
