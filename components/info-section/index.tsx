@@ -1,4 +1,3 @@
-// components/InfoSections/index.tsx
 import {
   InfoSection,
   UnitConversionCard,
